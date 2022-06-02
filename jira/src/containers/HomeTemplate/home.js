@@ -7,7 +7,7 @@ export default function HomeTemplate({ exact, path, component }) {
   if (localStorage.getItem("JiraSignin")) {
     return (
       <>
-        {path !== "/" && <Navbar />} 
+        {path !== "/" && path !=="/signup" && <Navbar />} 
         <Route exact={exact} path={path} component={component} />
       </>
     );
