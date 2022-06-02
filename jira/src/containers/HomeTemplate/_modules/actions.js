@@ -41,7 +41,7 @@ export const actSignUpApi = (signup) => {
     api
       .post("Users/signup", signup)
       .then((success) => {
-        dispatch(actSignUpSuccess(success.data));
+        dispatch(actSignUpSuccess(success.data.content));
         alert("Đăng ký thành công. Xin mời đăng nhập");
       })
       .catch((error) => {
@@ -49,18 +49,18 @@ export const actSignUpApi = (signup) => {
       });
   };
 };
-export const actSignUpRequest = () => {
+const actSignUpRequest = () => {
   return {
     type: ActionType.SIGNUP_REQUEST,
   };
 };
-export const actSignUpSuccess = (data) => {
+const actSignUpSuccess = (data) => {
   return {
     type: ActionType.SIGNUP_SUCCESS,
     payload: data,
   };
 };
-export const actSignUpFailed = (error) => {
+const actSignUpFailed = (error) => {
   return {
     type: ActionType.SIGNUP_FAILED,
     payload: error,
