@@ -73,7 +73,7 @@ export const actCreateProjectApi = (project) => {
     api
       .post("Project/createProject", project)
       .then((success) => {
-        dispatch(actCreateProjectSuccess(success.data));
+        dispatch(actCreateProjectSuccess(success.data.content));
         alert("success");
       })
       .catch((error) => {
