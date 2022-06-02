@@ -12,5 +12,4 @@ export default function HomeTemplate({ exact, path, component }) {
       </>
     );
   }
-  // return <Redirect to="/signin" />;
 }
