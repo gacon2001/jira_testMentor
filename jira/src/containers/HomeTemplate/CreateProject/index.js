@@ -23,10 +23,6 @@ export default function CreateProject(props) {
       [name]: value,
     });
   };
-  const { setFieldValue } = props;
-  const handleEditorChange = (content, editor) => {
-    setFieldValue("description", content);
-  };
   const handleOnCreateProject = (event) => {
     event.preventDefault();
     dispatch(actCreateProjectApi(state));
@@ -68,7 +64,7 @@ export default function CreateProject(props) {
                 "alignright alignjustify | bullist numlist outdent indent | " +
                 "removeformat | help",
             }}
-            onEditorChange={handleEditorChange}
+            onChange={handleOnChange}
           />
         </div>
 

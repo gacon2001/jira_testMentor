@@ -107,7 +107,7 @@ export const actFetchArrProjectCategoryApi = () => {
     api
       .get("ProjectCategory")
       .then((success) => {
-        dispatch(actFetchArrProjectCategorySuccess(success.data));
+        dispatch(actFetchArrProjectCategorySuccess(success.data.content));
       })
       .catch((error) => {
         dispatch(actFetchArrProjectCategoryFailed(error));
@@ -138,7 +138,7 @@ export const actGetAllProjectApi = () => {
     api
       .get("Project/getAllProject")
       .then((success) => {
-        dispatch(actGetAllProjectSuccess(success.data));
+        dispatch(actGetAllProjectSuccess(success.data.content));
       })
       .catch((error) => {
         dispatch(actGetAllProjectFailed(error));
