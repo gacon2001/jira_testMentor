@@ -1,10 +1,16 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
+import Navbar from "containers/_navbar";
+import React from "react";
+import { Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 export default function HomeTemplate({ exact, path, component }) {
-  return (
-    <div>
+  if (localStorage.getItem("JiraSignin")) {
+    return (
+      <>
+        {path !== "/" && <Navbar />} 
         <Route exact={exact} path={path} component={component} />
-    </div>
-  )
+      </>
+    );
+  }
+  return <Redirect to="/signup" />;
 }

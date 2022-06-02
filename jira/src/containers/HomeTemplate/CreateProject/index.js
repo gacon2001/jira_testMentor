@@ -32,9 +32,9 @@ export default function CreateProject(props) {
     dispatch(actCreateProjectApi(state));
   };
 
-    // useEffect(() => {
-    //   dispatch(actFetchArrProjectCategoryApi());
-    // }, []);
+  useEffect(() => {
+    dispatch(actFetchArrProjectCategoryApi());
+  }, []);
   return (
     <div className="container m-5">
       <h3>Create Project</h3>

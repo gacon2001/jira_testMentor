@@ -4,7 +4,7 @@ import HomeTemplate from "containers/HomeTemplate/home";
 const routes = [
   {
     exact: true,
-    path: "/home",
+    path: "/",
     component: lazy(() => import("containers/HomeTemplate/Signin")),
   },
   {

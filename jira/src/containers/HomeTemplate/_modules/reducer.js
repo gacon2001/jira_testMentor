@@ -68,7 +68,6 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.FETCH_ARR_PROJECT_CATEGORY_REQUEST: {
       state.loading = true;
-      state.arrProjectCategory = null;
       state.error = null;
       return { ...state };
     }
@@ -80,23 +79,28 @@ const reducer = (state = initialState, action) => {
     }
     case ActionType.FETCH_ARR_PROJECT_CATEGORY_FAILED: {
       state.loading = false;
-      state.arrProjectCategory = null;
       state.error = action.payload;
       return { ...state };
-    };
+    }
 
     case ActionType.GET_ALL_PROJECT_REQUEST:
-      state.loading = true;
-      state.error = null;
+      {
+        state.loading = true;
+        state.error = null;
+      }
       return { ...state };
     case ActionType.GET_ALL_PROJECT_SUCCESS:
-      state.loading = false;
-      state.listProject = action.payload;
-      state.error = null;
+      {
+        state.loading = false;
+        state.listProject = action.payload;
+        state.error = null;
+      }
       return { ...state };
     case ActionType.GET_ALL_PROJECT_FAILED:
-      state.loading = false;
-      state.error = action.payload;
+      {
+        state.loading = false;
+        state.error = action.payload;
+      }
       return { ...state };
     default:
       return { ...state };

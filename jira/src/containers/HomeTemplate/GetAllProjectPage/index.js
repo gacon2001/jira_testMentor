@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import { Container , Typography} from '@mui/material';
+import React, { useEffect } from "react";
+import { Container, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import { useDispatch, useSelector } from 'react-redux';
-import { actGetAllProjectPageApi } from '../_modules/actions';
+import { useDispatch, useSelector } from "react-redux";
+import { actGetAllProjectApi } from "../_modules/actions";
 
-import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
-import DeleteSweepOutlinedIcon from '@mui/icons-material/DeleteSweepOutlined';
+import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
+import DeleteSweepOutlinedIcon from "@mui/icons-material/DeleteSweepOutlined";
 
 const grey = {
-    200: "#E0E3E7",
-    800: "#2D3843",
-  };
+  200: "#E0E3E7",
+  800: "#2D3843",
+};
 const Root = styled("div")(
-    ({ theme }) => `
+  ({ theme }) => `
       table {
         font-family: IBM Plex Sans, sans-serif;
         font-size: 0.875rem;
@@ -32,33 +32,32 @@ const Root = styled("div")(
       thead {
         background-color: pink;
       `
-  );
+);
 
 export default function GetAllProjectPage() {
-    const listProject = useSelector((state)=> state.reducer.listProject);
-    const dispatch= useDispatch();
-    useEffect(()=>{
-        dispatch(actGetAllProjectPageApi());
-    },[])
-    const renderGetAllProjectPage = () => {
-        return listProject?.map((project, index) => {
-          return (
-            <tr key={index}>
-              <th>{project.id}</th>
-              <th>{project.projectName}</th>
-              <th className="d-none d-md-table-cell">{project.categoryName}</th>
-              <th className="d-none d-md-table-cell">
-              {project.creator.name}</th>
-              <th className="d-none d-md-table-cell">
-                <BorderColorOutlinedIcon className='button button-edit'/>
-                <DeleteSweepOutlinedIcon className='button-delete' />
-              </th>
-            </tr>
-          );
-        });
-      };
+  const listProject = useSelector((state) => state.reducer.listProject);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actGetAllProjectApi());
+  }, []);
+  const renderGetAllProject = () => {
+    return listProject?.map((project, index) => {
+      return (
+        <tr key={index}>
+          <th>{project.id}</th>
+          <th>{project.projectName}</th>
+          <th className="d-none d-md-table-cell">{project.categoryName}</th>
+          <th className="d-none d-md-table-cell">{project.creator.name}</th>
+          <th className="d-none d-md-table-cell">
+            <BorderColorOutlinedIcon className="button button-edit" />
+            <DeleteSweepOutlinedIcon className="button-delete" />
+          </th>
+        </tr>
+      );
+    });
+  };
   return (
-    <Container maxWidth="md" sx={{mt: 10}}>
+    <Container maxWidth="md" sx={{ mt: 10 }}>
       <Typography variant="h4">GetAllProjectPage</Typography>
 
       <Root sx={{ width: 500, maxWidth: "100%" }}>
@@ -72,11 +71,9 @@ export default function GetAllProjectPage() {
               <th className="d-none d-md-table-cell">Action </th>
             </tr>
           </thead>
-          <tbody>
-          {renderGetAllProjectPage()}
-          </tbody>
+          <tbody>{renderGetAllProject()}</tbody>
         </table>
       </Root>
     </Container>
-  )
+  );
 }
